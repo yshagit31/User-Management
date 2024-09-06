@@ -34,7 +34,7 @@ A React-based CRUD (Create, Read, Update, Delete) application to manage users, u
 
 Install dependencies:
 
-    ```bash
+   ```bash
       npm install
       or
       yarn install

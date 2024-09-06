@@ -33,13 +33,14 @@ A React-based CRUD (Create, Read, Update, Delete) application to manage users, u
 
 
 Install dependencies:
-   
-npm install
-or
-yarn install
+
+    ```bash
+      npm install
+      or
+      yarn install
 
 Start the development server:
-
-npm start
-or
-yarn start
+ ```bash
+   npm start
+   or
+   yarn start

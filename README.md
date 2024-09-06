@@ -41,7 +41,6 @@ Start the development server:
 
 Start the development server:
 
-```bash
       npm start
       or
       yarn start

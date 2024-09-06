@@ -12,10 +12,9 @@ A React-based CRUD (Create, Read, Update, Delete) application to manage users, u
 - **Error Handling**: Proper error handling and user notifications for API failures.
 - **Routing**: Utilizes React Router for navigation between different views.
 
-## Optional Advanced Features
+## Advanced Features
 
 - **Loading Spinner**: Display a loading spinner during API requests.
-- **TypeScript**: The application can be converted to TypeScript for better type safety.
 
 ## Getting Started
 

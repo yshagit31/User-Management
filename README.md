@@ -32,15 +32,16 @@ A React-based CRUD (Create, Read, Update, Delete) application to manage users, u
    cd user-management-app
 
 
-Install dependencies:
+Start the development server:
 
-   ```bash
+```bash
       npm install
       or
       yarn install
 
 Start the development server:
- ```bash
-   npm start
-   or
-   yarn start
+
+```bash
+      npm start
+      or
+      yarn start

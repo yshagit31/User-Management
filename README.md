@@ -35,11 +35,11 @@ A React-based CRUD (Create, Read, Update, Delete) application to manage users, u
 Install dependencies:
    
 npm install
-# or
+or
 yarn install
 
 Start the development server:
 
 npm start
-# or
+or
 yarn start

@@ -67,80 +67,82 @@ const Home = () => {
   const paginatedRows = rows.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage);
 
   return (
-    <Box sx={{ width: '100%', display: 'flex', flexDirection: 'column', minHeight: '100vh' }}>
-      <h1>Users</h1>
-      <Box sx={{ flex: 1 }}>
-        <Paper sx={{ width: '100%', mb: 2 }}>
-          <TableContainer>
-            <Table sx={{ minWidth: 750 }} size='medium'>
-              <TableHead>
-                <TableRow>
-                  <TableCell>ID</TableCell>
-                  <TableCell>Name</TableCell>
-                  <TableCell>Email</TableCell>
-                  <TableCell>Phone</TableCell>
-                  <TableCell>Actions</TableCell>
-                </TableRow>
-              </TableHead>
-              <TableBody>
-                {loading ? (
+    <Box sx={{ width: '100%', display: 'flex', flexDirection: 'column', minHeight: '100vh', backgroundColor: '#f5f5f5' }}>
+      <Box sx={{ padding: 2 }}>
+        <h1>Users</h1>
+        <Box sx={{ flex: 1 }}>
+          <Paper sx={{ width: '100%', mb: 2, overflow: 'hidden' }}>
+            <TableContainer>
+              <Table sx={{ minWidth: 750 }} size='medium'>
+                <TableHead>
                   <TableRow>
-                    <TableCell colSpan={5} align="center">
-                      <Skeleton variant="rectangular" width="100%" height={50} />
-                      <Skeleton variant="text" width="100%" />
-                      <Skeleton variant="text" width="100%" />
-                    </TableCell>
+                    <TableCell>ID</TableCell>
+                    <TableCell>Name</TableCell>
+                    <TableCell>Email</TableCell>
+                    <TableCell>Phone</TableCell>
+                    <TableCell>Actions</TableCell>
                   </TableRow>
-                ) : paginatedRows.length === 0 ? (
-                  <TableRow>
-                    <TableCell colSpan={5} align="center">
-                      No Data Available
-                    </TableCell>
-                  </TableRow>
-                ) : (
-                  paginatedRows.map((row) => (
-                    <TableRow key={row.id}>
-                      <TableCell>{row.id}</TableCell>
-                      <TableCell>
-                        <Link href="#" onClick={() => handleViewDetails(row.id)}>
-                          {row.name}
-                        </Link>
-                      </TableCell>
-                      <TableCell>{row.email}</TableCell>
-                      <TableCell>{row.phone}</TableCell>
-                      <TableCell>
-                        <IconButton onClick={() => handleEdit(row.id)} color="primary">
-                          <EditIcon />
-                        </IconButton>
-                        <IconButton onClick={() => handleDelete(row.id)} color="secondary">
-                          <DeleteIcon />
-                        </IconButton>
+                </TableHead>
+                <TableBody>
+                  {loading ? (
+                    <TableRow>
+                      <TableCell colSpan={5} align="center">
+                        <Skeleton variant="rectangular" width="100%" height={50} />
+                        <Skeleton variant="text" width="100%" />
+                        <Skeleton variant="text" width="100%" />
                       </TableCell>
                     </TableRow>
-                  ))
-                )}
-              </TableBody>
-            </Table>
-          </TableContainer>
-          <TablePagination
-            rowsPerPageOptions={[5, 10, 25]}
-            component="div"
-            count={rows.length}
-            rowsPerPage={rowsPerPage}
-            page={page}
-            onPageChange={handleChangePage}
-            onRowsPerPageChange={handleChangeRowsPerPage}
-          />
-        </Paper>
-      </Box>
-      <Box sx={{ display: 'flex', justifyContent: 'flex-end', p: 2 }}>
-        <Button
-          variant="contained"
-          color="primary"
-          onClick={() => navigate('/create')}
-        >
-          Create User
-        </Button>
+                  ) : paginatedRows.length === 0 ? (
+                    <TableRow>
+                      <TableCell colSpan={5} align="center">
+                        No Data Available
+                      </TableCell>
+                    </TableRow>
+                  ) : (
+                    paginatedRows.map((row) => (
+                      <TableRow key={row.id}>
+                        <TableCell>{row.id}</TableCell>
+                        <TableCell>
+                          <Link href="#" onClick={() => handleViewDetails(row.id)}>
+                            {row.name}
+                          </Link>
+                        </TableCell>
+                        <TableCell>{row.email}</TableCell>
+                        <TableCell>{row.phone}</TableCell>
+                        <TableCell>
+                          <IconButton onClick={() => handleEdit(row.id)} color="primary">
+                            <EditIcon />
+                          </IconButton>
+                          <IconButton onClick={() => handleDelete(row.id)} color="secondary">
+                            <DeleteIcon />
+                          </IconButton>
+                        </TableCell>
+                      </TableRow>
+                    ))
+                  )}
+                </TableBody>
+              </Table>
+            </TableContainer>
+            <TablePagination
+              rowsPerPageOptions={[5, 10, 25]}
+              component="div"
+              count={rows.length}
+              rowsPerPage={rowsPerPage}
+              page={page}
+              onPageChange={handleChangePage}
+              onRowsPerPageChange={handleChangeRowsPerPage}
+            />
+          </Paper>
+        </Box>
+        <Box sx={{ display: 'flex', justifyContent: 'flex-end', p: 2 }}>
+          <Button
+            variant="contained"
+            color="primary"
+            onClick={() => navigate('/create')}
+          >
+            Create User
+          </Button>
+        </Box>
       </Box>
     </Box>
   );

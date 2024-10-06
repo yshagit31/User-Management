@@ -73,9 +73,9 @@ const Home = () => {
         <Box sx={{ flex: 1 }}>
           <Paper sx={{ width: '100%', mb: 2, overflow: 'hidden' }}>
             <TableContainer>
-              <Table sx={{ minWidth: 750 }} size='medium'>
+              <Table sx={{ minWidth: 750 , color:'#ffffff'}} size='medium'>
                 <TableHead>
-                  <TableRow>
+                  <TableRow sx={{backgroundColor:'#ae3535'}}>
                     <TableCell>ID</TableCell>
                     <TableCell>Name</TableCell>
                     <TableCell>Email</TableCell>
@@ -84,46 +84,50 @@ const Home = () => {
                   </TableRow>
                 </TableHead>
                 <TableBody>
-                  {loading ? (
-                    <TableRow>
-                      <TableCell colSpan={5} align="center">
-                        <Skeleton variant="rectangular" width="100%" height={50} />
-                        <Skeleton variant="text" width="100%" />
-                        <Skeleton variant="text" width="100%" />
+              {loading ? (
+                  <TableRow>
+                    <TableCell colSpan={5} align="center">
+                      <Skeleton variant="rectangular" width="100%" height={50} />
+                      <Skeleton variant="text" width="100%" />
+                      <Skeleton variant="text" width="100%" />
+                    </TableCell>
+                  </TableRow>
+                ) : paginatedRows.length === 0 ? (
+                  <TableRow>
+                    <TableCell colSpan={5} align="center">
+                      No Data Available
+                    </TableCell>
+                  </TableRow>
+                ) : (
+                  paginatedRows.map((row, index) => (
+                    <TableRow
+                      key={row.id}
+                      sx={{ backgroundColor: index % 2 === 0 ? '#fd635e' : '#ff977e' }}
+                    >
+                      <TableCell sx={{ color: '#ffffff' }}>{row.id}</TableCell>
+                      <TableCell sx={{ color: '#ffffff' }}>
+                        <Link href="#" onClick={() => handleViewDetails(row.id)} sx={{ textDecoration: 'none', color: '#ffffff' }}>
+                          {row.name}
+                        </Link>
+                      </TableCell>
+                      <TableCell sx={{ color: '#ffffff' }}>{row.email}</TableCell>
+                      <TableCell sx={{ color: '#ffffff' }}>{row.phone}</TableCell>
+                      <TableCell>
+                        <IconButton onClick={() => handleEdit(row.id)} color="primary">
+                          <EditIcon />
+                        </IconButton>
+                        <IconButton onClick={() => handleDelete(row.id)} color="secondary">
+                          <DeleteIcon />
+                        </IconButton>
                       </TableCell>
                     </TableRow>
-                  ) : paginatedRows.length === 0 ? (
-                    <TableRow>
-                      <TableCell colSpan={5} align="center">
-                        No Data Available
-                      </TableCell>
-                    </TableRow>
-                  ) : (
-                    paginatedRows.map((row) => (
-                      <TableRow key={row.id}>
-                        <TableCell>{row.id}</TableCell>
-                        <TableCell>
-                          <Link href="#" onClick={() => handleViewDetails(row.id)}>
-                            {row.name}
-                          </Link>
-                        </TableCell>
-                        <TableCell>{row.email}</TableCell>
-                        <TableCell>{row.phone}</TableCell>
-                        <TableCell>
-                          <IconButton onClick={() => handleEdit(row.id)} color="primary">
-                            <EditIcon />
-                          </IconButton>
-                          <IconButton onClick={() => handleDelete(row.id)} color="secondary">
-                            <DeleteIcon />
-                          </IconButton>
-                        </TableCell>
-                      </TableRow>
-                    ))
-                  )}
-                </TableBody>
+                  ))
+                )}
+              </TableBody>
               </Table>
             </TableContainer>
             <TablePagination
+            sx={{backgroundColor:'#ff977e'}}
               rowsPerPageOptions={[5, 10, 25]}
               component="div"
               count={rows.length}
@@ -140,7 +144,7 @@ const Home = () => {
             color="primary"
             onClick={() => navigate('/create')}
           >
-            Create User
+              Create User
           </Button>
         </Box>
       </Box>
